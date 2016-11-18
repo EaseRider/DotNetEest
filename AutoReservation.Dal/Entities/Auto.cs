@@ -5,10 +5,11 @@ using System.Data.Entity;
 
 namespace AutoReservation.Dal.Entities
 {
-    public class Auto
+    public class Auto: IEntitiesInterface
     {
         public int Id { get; set; }
         public string Marke { get; set; }
+        [Timestamp]
         public byte[] RowVersion { get; set; }
         public int Tagestarif { get; set; }
         public virtual List<Reservation> Reservationen { get; set; }
