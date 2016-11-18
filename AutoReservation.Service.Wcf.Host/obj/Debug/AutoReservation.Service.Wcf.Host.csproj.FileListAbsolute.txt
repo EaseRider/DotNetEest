@@ -1,1 +1,0 @@
-C:\Studium\MsTe\DotNetEest\AutoReservation.Service.Wcf.Host\bin\Debug\AutoReservation.Service.Wcf.Host.exe.config

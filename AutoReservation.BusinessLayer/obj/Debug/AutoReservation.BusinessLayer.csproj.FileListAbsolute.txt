@@ -1,1 +1,0 @@
-C:\Studium\MsTe\DotNetEest\AutoReservation.BusinessLayer\obj\Debug\AutoReservation.BusinessLayer.csprojResolveAssemblyReference.cache
