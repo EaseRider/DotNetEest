@@ -110,6 +110,7 @@ namespace AutoReservation.Service.Wcf
                 ReservationsNr = dto.ReservationsNr,
                 Von = dto.Von,
                 Bis = dto.Bis,
+                // ok no need to convert every thing here... so keep code as it it
                 AutoId = dto.Auto.Id,
                 KundeId = dto.Kunde.Id,
                 RowVersion = dto.RowVersion
