@@ -1,0 +1,1 @@
+C:\Studium\MsTe\DotNetEest\AutoReservation.Service.Wcf.Testing\obj\Debug\AutoReservation.Service.Wcf.Testing.csprojResolveAssemblyReference.cache
