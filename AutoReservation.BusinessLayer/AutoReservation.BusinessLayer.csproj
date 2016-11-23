@@ -80,9 +80,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\Assets\AutoReservation.StrongNameKey.snk">
-      <Link>..\Assets\AutoReservation.StrongNameKey.snk</Link>
-    </None>
+    <None Include="..\Assets\AutoReservation.StrongNameKey.snk"></None>
     <None Include="AutoReservationBusinessComponent.cd" />
     <None Include="packages.config" />
   </ItemGroup>

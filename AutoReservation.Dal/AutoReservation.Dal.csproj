@@ -78,6 +78,10 @@
     <Compile Include="AutoReservationContext.cs" />
     <Compile Include="Entities\IEntitiesInterface.cs" />
     <Compile Include="Entities\Kunde.cs" />
+    <Compile Include="Migrations\201611231546405_ReservationKeyChanged.cs" />
+    <Compile Include="Migrations\201611231546405_ReservationKeyChanged.Designer.cs">
+      <DependentUpon>201611231546405_ReservationKeyChanged.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Reservation.cs" />
@@ -87,13 +91,17 @@
     <None Include="..\Assets\App.config">
       <Link>App.config</Link>
     </None>
-    <None Include="..\..\Assets\AutoReservation.StrongNameKey.snk">
-      <Link>..\Assets\AutoReservation.StrongNameKey.snk</Link>
+    <None Include="..\Assets\AutoReservation.StrongNameKey.snk">
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201611231546405_ReservationKeyChanged.resx">
+      <DependentUpon>201611231546405_ReservationKeyChanged.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -31,19 +31,32 @@ namespace AutoReservation.BusinessLayer.Testing
         [TestMethod]
         public void UpdateAutoTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Auto auto = Target.GetById<Auto>(1);
+            auto.Marke = "Test 1234";
+            Target.SaveObject(auto);
+            Auto autoChanged = Target.GetById<Auto>(1);
+            Assert.AreEqual("Test 1234", autoChanged.Marke, "BusinessLayer: Auto not Updated in DB!");
         }
 
         [TestMethod]
         public void UpdateKundeTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Kunde kunde = Target.GetById<Kunde>(1);
+            kunde.Vorname = "TestingVorname";
+            Target.SaveObject(kunde);
+            Kunde kundeChanged = Target.GetById<Kunde>(1);
+            Assert.AreEqual("TestingVorname", kundeChanged.Vorname, "BusinessLayer: Auto not Updated in DB!");
         }
 
         [TestMethod]
         public void UpdateReservationTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            Reservation reservation = Target.GetById<Reservation>(1);
+            reservation.Bis = new DateTime(2111, 11, 11);
+            Target.SaveObject(reservation);
+            Reservation reservationChanged = Target.GetById<Reservation>(1);
+            Assert.IsTrue(new DateTime(2111, 11, 11).Equals(reservationChanged.Bis), 
+                "BusinessLayer: Reservation not Updated in DB!");
         }
 
     }

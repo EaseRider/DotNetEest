@@ -16,10 +16,37 @@ namespace AutoReservation.BusinessLayer
             context = new AutoReservationContext();
         }
 
+        public T GetById<T>(int id)
+            where T : class, IEntitiesInterface
+        {
+            return context.Set<T>().First(arg => arg.Id == id);
+        }
+
+        public List<T> GetAll<T>()
+            where T : class, IEntitiesInterface
+        {
+            return context.Set<T>().ToList();
+        } 
+
         public void SaveObject<T>(T obj)
             where T: class, IEntitiesInterface 
         {
             context.Entry(obj).State = obj.Id == 0 ? EntityState.Added : EntityState.Modified;
+            
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw CreateLocalOptimisticConcurrencyException(context, obj);
+            }
+        }
+
+        public void DeleteObject<T>(T obj)
+            where T : class, IEntitiesInterface
+        {
+            context.Entry(obj).State = EntityState.Deleted;
             try
             {
                 context.SaveChanges();

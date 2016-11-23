@@ -24,6 +24,7 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void GetAutosTest()
         {
+            
             Assert.Inconclusive("Test not implemented.");
         }
 

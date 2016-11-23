@@ -14,10 +14,12 @@ namespace AutoReservation.Dal.Entities
         [NotMapped]
         public Kunde Kunde { get; set; }
 
-        [Key]
-        public int ReservationsNr { get; set; }
-
         [NotMapped]
+        public int ReservationsNr {
+            get { return Id; }
+            set { Id = value; } }
+
+        [Key]
         public int Id {
             get { return ReservationsNr; }
             set { ReservationsNr = value; }

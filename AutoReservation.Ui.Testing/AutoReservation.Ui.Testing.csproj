@@ -89,9 +89,7 @@
       <Link>App.config</Link>
       <SubType>Designer</SubType>
     </None>
-    <None Include="..\..\Assets\AutoReservation.StrongNameKey.snk">
-      <Link>..\Assets\AutoReservation.StrongNameKey.snk</Link>
-    </None>
+    <None Include="..\Assets\AutoReservation.StrongNameKey.snk"></None>
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

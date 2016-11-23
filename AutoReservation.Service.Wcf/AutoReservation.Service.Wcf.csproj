@@ -85,9 +85,7 @@
     <None Include="..\Assets\App.config">
       <Link>App.config</Link>
     </None>
-    <None Include="..\..\Assets\AutoReservation.StrongNameKey.snk">
-      <Link>..\Assets\AutoReservation.StrongNameKey.snk</Link>
-    </None>
+    <None Include="..\Assets\AutoReservation.StrongNameKey.snk"></None>
     <None Include="AutoReservationService.cd" />
     <None Include="packages.config" />
   </ItemGroup>
