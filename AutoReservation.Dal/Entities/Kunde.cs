@@ -14,6 +14,7 @@ namespace AutoReservation.Dal.Entities
         [Timestamp]
         public byte[] RowVersion { get; set; }
         public string Vorname { get; set; }
+        [InverseProperty("Kunde")]
         public virtual List<Reservation> Reservationen { get; set; }
     }
 }

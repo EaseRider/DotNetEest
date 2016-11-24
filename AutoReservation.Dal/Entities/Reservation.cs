@@ -7,11 +7,11 @@ namespace AutoReservation.Dal.Entities
     public class Reservation: IEntitiesInterface
     {
         public int AutoId { get; set; }
-        [NotMapped]
+        [ForeignKey("AutoId"), InverseProperty("Reservationen")]
         public Auto Auto { get; set; }
         public DateTime Bis { get; set; }
         public int KundeId { get; set; }
-        [NotMapped]
+        [ForeignKey("KundeId"), InverseProperty("Reservationen")]
         public Kunde Kunde { get; set; }
 
         [NotMapped]
@@ -20,10 +20,8 @@ namespace AutoReservation.Dal.Entities
             set { Id = value; } }
 
         [Key]
-        public int Id {
-            get { return ReservationsNr; }
-            set { ReservationsNr = value; }
-        }
+        public int Id {get; set; }
+
         [Timestamp]
         public byte[] RowVersion { get; set; }
         public DateTime Von { get; set; }

@@ -29,9 +29,30 @@ namespace AutoReservation.BusinessLayer
         } 
 
         public void SaveObject<T>(T obj)
-            where T: class, IEntitiesInterface 
+            where T: class, IEntitiesInterface
         {
-            context.Entry(obj).State = obj.Id == 0 ? EntityState.Added : EntityState.Modified;
+            try
+            {
+                bool bla = obj.Id == 0;
+                var blub = context.Entry<T>(obj);
+                context.Entry<T>(obj).State = obj.Id == 0 ? EntityState.Added : EntityState.Modified;
+                /*if (bla)
+                {
+                    
+                }
+                else
+                {
+                    context.Set<T>().Attach(obj);
+                }*/
+
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+           
             
             try
             {

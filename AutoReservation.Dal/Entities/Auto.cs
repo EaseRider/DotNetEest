@@ -12,22 +12,20 @@ namespace AutoReservation.Dal.Entities
         [Timestamp]
         public byte[] RowVersion { get; set; }
         public int Tagestarif { get; set; }
+        [InverseProperty("Auto")]
         public virtual List<Reservation> Reservationen { get; set; }
     }
 
-    [Table("LuxusklasseAuto")]
     public class LuxusklasseAuto : Auto
     {
         public int Basistarif { get; set; }
     }
 
-    [Table("MittelklasseAuto")]
     public class MittelklasseAuto : Auto
     {
         
     }
 
-    [Table("StandardAuto")]
     public class StandardAuto : Auto
     {
         

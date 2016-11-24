@@ -63,6 +63,14 @@ namespace AutoReservation.TestEnvironment
                     // Insert test data
                     context.Autos.AddRange(Autos);
                     context.Kunden.AddRange(Kunden);
+                    var bla = new Reservation
+                    {
+                        ReservationsNr = 1,
+                        AutoId = 1,
+                        KundeId = 1,
+                        Von = new DateTime(2020, 01, 10),
+                        Bis = new DateTime(2020, 01, 20)
+                    };
                     context.Reservationen.AddRange(Reservationen);
                     context.SaveChanges();
                 }
