@@ -36,9 +36,15 @@ namespace AutoReservation.BusinessLayer
             {
                 context.Entry<T>(obj).State = EntityState.Added;
             }
-            else
+            else if (entity.GetType() == obj.GetType())
             {
                 context.Entry(entity).CurrentValues.SetValues(obj);
+            }
+            else
+            {
+                DeleteObject(obj);
+                obj.Id = 0;
+                SaveObject<T>(obj);
             }
 
             try
@@ -54,14 +60,18 @@ namespace AutoReservation.BusinessLayer
         public void DeleteObject<T>(T obj)
             where T : class, IEntitiesInterface
         {
-            context.Entry(obj).State = EntityState.Deleted;
-            try
+            var entity = context.Set<T>().Find(obj.Id);
+            if (entity != null)
             {
-                context.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                throw CreateLocalOptimisticConcurrencyException(context, obj);
+                context.Entry<T>(entity).State = EntityState.Deleted;
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    throw CreateLocalOptimisticConcurrencyException(context, obj);
+                }
             }
         }
         
