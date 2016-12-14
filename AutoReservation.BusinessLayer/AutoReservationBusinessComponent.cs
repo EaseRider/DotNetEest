@@ -19,11 +19,11 @@ namespace AutoReservation.BusinessLayer
                 if (typeof (T) == typeof (Reservation))
                 {
                     return GetFKPropertyNames<T>().Aggregate((IQueryable <T> )context.Set<T>(), 
-                        (current, fk) => current.Include(fk)).First(arg => arg.Id == id);
+                        (current, fk) => current.Include(fk)).SingleOrDefault(arg => arg.Id == id);
                     //return context.Set<T>().Include("Auto").Include("Kunde").First(arg => arg.Id == id);
                 }
                 var set = context.Set<T>().ToList();
-                return context.Set<T>().First(arg => arg.Id == id);
+                return context.Set<T>().SingleOrDefault(arg => arg.Id == id);
             }
         }
         
@@ -65,9 +65,9 @@ namespace AutoReservation.BusinessLayer
         {
             using (AutoReservationContext context = new AutoReservationContext())
             {
-                if (obj.Id != 0)
+                var entity = context.Autos.Include("Reservationen").SingleOrDefault(auto => auto.Id == obj.Id);
+                if (entity != null)
                 {
-                    var entity = context.Autos.Include("Reservationen").First(auto => auto.Id == obj.Id);
                     if (ObjectContext.GetObjectType(entity.GetType()) == ObjectContext.GetObjectType(obj.GetType()))
                     {
                         SaveObject<Auto>(obj);
