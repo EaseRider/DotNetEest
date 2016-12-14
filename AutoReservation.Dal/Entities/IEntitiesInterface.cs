@@ -9,5 +9,6 @@ namespace AutoReservation.Dal.Entities
     public interface IEntitiesInterface
     {
         int Id { get; set; }
+        byte[] RowVersion { get; set; }
     }
 }

@@ -90,6 +90,14 @@
     <Compile Include="Migrations\201611241049482_InversPropertyAdded.Designer.cs">
       <DependentUpon>201611241049482_InversPropertyAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611291758227_nullableForeingKey.cs" />
+    <Compile Include="Migrations\201611291758227_nullableForeingKey.Designer.cs">
+      <DependentUpon>201611291758227_nullableForeingKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611291800319_nullableForeingKeyRevert.cs" />
+    <Compile Include="Migrations\201611291800319_nullableForeingKeyRevert.Designer.cs">
+      <DependentUpon>201611291800319_nullableForeingKeyRevert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Reservation.cs" />
@@ -115,6 +123,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611241049482_InversPropertyAdded.resx">
       <DependentUpon>201611241049482_InversPropertyAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611291758227_nullableForeingKey.resx">
+      <DependentUpon>201611291758227_nullableForeingKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611291800319_nullableForeingKeyRevert.resx">
+      <DependentUpon>201611291800319_nullableForeingKeyRevert.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

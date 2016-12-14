@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.ServiceModel;
 using AutoReservation.BusinessLayer;
 using AutoReservation.Common.DataTransferObjects;
 using AutoReservation.Common.Interfaces;
@@ -93,7 +94,15 @@ namespace AutoReservation.Service.Wcf
         {
             WriteActualMethod();
             Auto auto = autoDto.ConvertToEntity();
-            BusinessComponent.SaveObject(auto);
+            try
+            {
+                BusinessComponent.SaveObject(auto);
+            }
+            catch (LocalOptimisticConcurrencyException<Auto>)
+            {
+                throw new FaultException();
+            }
+
             return auto.ConvertToDto();
         }
 
@@ -101,7 +110,14 @@ namespace AutoReservation.Service.Wcf
         {
             WriteActualMethod();
             Kunde kunde = kundeDto.ConvertToEntity();
-            BusinessComponent.SaveObject(kunde);
+            try
+            {
+                BusinessComponent.SaveObject(kunde);
+            }
+            catch (LocalOptimisticConcurrencyException<Kunde>)
+            {
+                throw new FaultException();
+            }
             return kunde.ConvertToDto();
         }
 
@@ -109,26 +125,54 @@ namespace AutoReservation.Service.Wcf
         {
             WriteActualMethod();
             Reservation reservation = reservationDto.ConvertToEntity();
-            BusinessComponent.SaveObject(reservation);
+            try
+            {
+                BusinessComponent.SaveObject(reservation);
+            }
+            catch (LocalOptimisticConcurrencyException<Reservation>)
+            {
+                throw new FaultException();
+            }
             return reservation.ConvertToDto();
         }
 
         public void DeleteAuto(AutoDto auto)
         {
             WriteActualMethod();
-            BusinessComponent.DeleteObject(auto.ConvertToEntity());
+            try
+            {
+                BusinessComponent.DeleteObject(auto.ConvertToEntity());
+            }
+            catch (LocalOptimisticConcurrencyException<Auto>)
+            {
+                throw new FaultException();
+            }
         }
 
         public void DeleteKunde(KundeDto kunde)
         {
             WriteActualMethod();
-            BusinessComponent.DeleteObject(kunde.ConvertToEntity());
+            try
+            {
+                BusinessComponent.DeleteObject(kunde.ConvertToEntity());
+            }
+            catch (LocalOptimisticConcurrencyException<Kunde>)
+            {
+                throw new FaultException();
+            }
         }
 
         public void DeleteReservation(ReservationDto reservation)
         {
             WriteActualMethod();
-            BusinessComponent.DeleteObject(reservation.ConvertToEntity());
+            try
+            {
+                BusinessComponent.DeleteObject(reservation.ConvertToEntity());
+            }
+            catch (LocalOptimisticConcurrencyException<Reservation>)
+            {
+                throw new FaultException();
+            }
         }
     }
 }
