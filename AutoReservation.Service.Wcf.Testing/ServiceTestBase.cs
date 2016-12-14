@@ -24,20 +24,22 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void GetAutosTest()
         {
-            
-            Assert.Inconclusive("Test not implemented.");
+            List<AutoDto> list = Target.Autos;
+            Assert.AreEqual(3, list.Count);
         }
 
         [TestMethod]
         public void GetKundenTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            List<KundeDto> list = Target.Kunden;
+            Assert.AreEqual(4, list.Count);
         }
 
         [TestMethod]
         public void GetReservationenTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            List<ReservationDto> list = Target.Reservationen;
+            Assert.AreEqual(3, list.Count);
         }
 
         #endregion
@@ -47,7 +49,8 @@ namespace AutoReservation.Service.Wcf.Testing
         [TestMethod]
         public void GetAutoByIdTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto auto = Target.GetAutoById(1);
+            Assert.AreEqual(1, auto.Id);
         }
 
         [TestMethod]
@@ -154,9 +157,15 @@ namespace AutoReservation.Service.Wcf.Testing
         #region Update with optimistic concurrency violation
 
         [TestMethod]
+        [ExpectedException(typeof(FaultException))]
         public void UpdateAutoWithOptimisticConcurrencyTest()
         {
-            Assert.Inconclusive("Test not implemented.");
+            AutoDto auto1 = Target.GetAutoById(1);
+            auto1.Marke = "hansigugus";
+            AutoDto auto2 = Target.GetAutoById(1);
+            auto2.Tagestarif = 333;
+            Target.UpdateAuto(auto1);
+            Target.UpdateAuto(auto2);
         }
 
         [TestMethod]
